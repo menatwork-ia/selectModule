@@ -47,8 +47,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['selectmodule_wizard'] = array
                 'label'                 => &$GLOBALS['TL_LANG']['tl_module']['selectmodule_language'],
                 'inputType'             => 'select',
                 'options'               => $this->getLanguages(),
-                'default'               => 'de',
-                'eval'                  => array('style' => 'width:250px')
+                'eval'                  => array('mandatory' => true, 'style' => 'width:300px', 'includeBlankOption' => true)
             ),
             'module' => array(
                 'label'                 => &$GLOBALS['TL_LANG']['tl_module']['selectmodule_module'],
