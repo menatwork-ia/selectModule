@@ -27,8 +27,17 @@
  * @filesource
  */
 
-$GLOBALS['TL_LANG']['tl_module']['selectmodule_wizard']         = array('Modulwechsler', 'Hier können Sie Frontend-Modulen einer Sprache zuweisen.');
-$GLOBALS['TL_LANG']['tl_module']['selectmodule_language']       = array('Sprache', '');
-$GLOBALS['TL_LANG']['tl_module']['selectmodule_module']         = array('Frontend-Modul', '');
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_module']['search_legend']       = 'Suche';
+
+/**
+ * Fields
+ */
+$GLOBALS['TL_LANG']['tl_module']['sm_wizard']           = array('Modulwechsler', 'Hier können Sie Frontend-Modulen einer Sprache zuweisen.');
+$GLOBALS['TL_LANG']['tl_module']['sm_language']         = array('Sprache', '');
+$GLOBALS['TL_LANG']['tl_module']['sm_module']           = array('Frontend-Modul', '');
+$GLOBALS['TL_LANG']['tl_module']['sm_searchable']       = array('Nicht suchbar', 'Wenn Sie diese Option wählen, werden die Module nicht für die Webseiten-Suche indexiert.');
 
 ?>

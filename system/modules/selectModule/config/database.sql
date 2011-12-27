@@ -15,5 +15,6 @@
 -- 
 
 CREATE TABLE `tl_module` (
-  `selectmodule_wizard` blob NULL
+  `sm_wizard` blob NULL,
+  `sm_searchable` char(1) NOT NULL default '',
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

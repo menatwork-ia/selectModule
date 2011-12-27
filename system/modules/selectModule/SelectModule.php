@@ -65,7 +65,7 @@ class SelectModule extends Module
     {
         $strReturn = "";
         
-        foreach (deserialize($this->selectmodule_wizard) as $arrValue)
+        foreach (deserialize($this->sm_wizard) as $arrValue)
         {            
             if($GLOBALS["TL_LANGUAGE"] == $arrValue["language"])
             {
@@ -73,6 +73,7 @@ class SelectModule extends Module
             }            
         }
         
+        $this->Template->searchable = ($this->sm_searchable == 1) ? true : false;
         $this->Template->content = $strReturn;
     }
 

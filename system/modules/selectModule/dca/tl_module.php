@@ -30,27 +30,27 @@ if (!defined('TL_ROOT')) die('You can not access this file directly!');
 /**
  * Add palettes to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['selectmodule'] = '{title_legend},name,type;{config_legend},selectmodule_wizard';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['selectmodule'] = '{title_legend},name,type;{config_legend},sm_wizard;{search_legend},sm_searchable;';
 
 /**
  * Add fields to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['fields']['selectmodule_wizard'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard'] = array
     (
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['selectmodule_wizard'],
-    'exclude' => true,
-    'inputType' => 'multiColumnWizard',
+    'label'                             => &$GLOBALS['TL_LANG']['tl_module']['sm_wizard'],
+    'exclude'                           => true,
+    'inputType'                         => 'multiColumnWizard',
     'eval' => array(
         'tl_class'                      => 'clr',
         'columnFields' => array(
             'language' => array(
-                'label'                 => &$GLOBALS['TL_LANG']['tl_module']['selectmodule_language'],
+                'label'                 => &$GLOBALS['TL_LANG']['tl_module']['sm_language'],
                 'inputType'             => 'select',
                 'options'               => $this->getLanguages(),
                 'eval'                  => array('mandatory' => true, 'style' => 'width:300px', 'includeBlankOption' => true)
             ),
             'module' => array(
-                'label'                 => &$GLOBALS['TL_LANG']['tl_module']['selectmodule_module'],
+                'label'                 => &$GLOBALS['TL_LANG']['tl_module']['sm_module'],
                 'exclude'               => true,
                 'inputType'             => 'select',
                 'options_callback'      => array('SelectModule_module', 'options_callback'),
@@ -58,6 +58,13 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['selectmodule_wizard'] = array
             ),
         )
     )
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['sm_searchable'] = array
+(
+    'label'                             => &$GLOBALS['TL_LANG']['tl_module']['sm_searchable'],
+    'exclude'                           => true,
+    'inputType'                         => 'checkbox'
 );
 
 class SelectModule_module extends Backend
@@ -70,22 +77,23 @@ class SelectModule_module extends Backend
         $this->import("Database");
     }
 
-    public function options_callback($foo)
-    {        
+    public function options_callback($objWidget)
+    {
+
         $arrModules = array();
-        
-        if(strlen($foo->currentRecord) != 0)
+
+        if (strlen($objWidget->currentRecord) != 0)
         {
-            $arrModules = $this->Database->prepare("SELECT id, name FROM tl_module WHERE pid=(SELECT pid FROM tl_module WHERE id=?) ORDER BY name asc")->execute($foo->currentRecord)->fetchAllAssoc();
+            $arrModules = $this->Database->prepare("SELECT id, name FROM tl_module WHERE pid=(SELECT pid FROM tl_module WHERE id=?) ORDER BY name asc")->execute($objWidget->currentRecord)->fetchAllAssoc();
         }
-        
+
         $arrReturn = array();
-        
+
         foreach ($arrModules as $key => $value)
         {
             $arrReturn[$value["id"]] = $value["name"];
         }
-        
+
         return $arrReturn;
     }
 

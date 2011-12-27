@@ -27,8 +27,17 @@
  * @filesource
  */
 
-$GLOBALS['TL_LANG']['tl_module']['selectmodule_wizard']         = array('Switch modules', 'Here you can select a language for the frontend modules.');
-$GLOBALS['TL_LANG']['tl_module']['selectmodule_language']       = array('Language', '');
-$GLOBALS['TL_LANG']['tl_module']['selectmodule_module']         = array('Frontend module', '');
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_module']['search_legend']       = 'Suche';
+
+/**
+ * Fields
+ */
+$GLOBALS['TL_LANG']['tl_module']['sm_wizard']           = array('Switch modules', 'Here you can select a language for the frontend modules.');
+$GLOBALS['TL_LANG']['tl_module']['sm_language']         = array('Language', '');
+$GLOBALS['TL_LANG']['tl_module']['sm_module']           = array('Frontend module', '');
+$GLOBALS['TL_LANG']['tl_module']['sm_searchable']       = array('Not searchable', 'If you choose this option, the modules will not be indexed for website searching.');
 
 ?>
