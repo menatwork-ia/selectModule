@@ -22,7 +22,7 @@ if (!defined('TL_ROOT')) die('You can not access this file directly!');
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  MEN AT WORK 2011
+ * @copyright  MEN AT WORK 2012
  * @package    selectModule
  * @license    GNU/LGPL
  * @filesource
@@ -41,7 +41,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard'] = array
     'exclude'                           => true,
     'inputType'                         => 'multiColumnWizard',
     'eval' => array(
-        'tl_class'                      => 'clr',
         'columnFields' => array(
             'language' => array(
                 'label'                 => &$GLOBALS['TL_LANG']['tl_module']['sm_language'],
@@ -66,6 +65,13 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sm_searchable'] = array
     'exclude'                           => true,
     'inputType'                         => 'checkbox'
 );
+
+// Set chosen if we have a contao version 2.11
+if(version_compare(VERSION, "2.11", ">="))
+{
+    $GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard']['eval']['columnFields']['language']['eval']['chosen'] = true;
+	$GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard']['eval']['columnFields']['module']['eval']['chosen'] = true;
+}
 
 class SelectModule_module extends Backend
 {
