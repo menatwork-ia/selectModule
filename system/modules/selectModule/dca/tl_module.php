@@ -91,14 +91,22 @@ class SelectModule_module extends Backend
         if (strlen($objWidget->currentRecord) != 0)
         {
             $arrModules = $this->Database->prepare("SELECT id, name FROM tl_module WHERE pid=(SELECT pid FROM tl_module WHERE id=?) ORDER BY name asc")->execute($objWidget->currentRecord)->fetchAllAssoc();
+	    $arrForms = $this->Database->prepare("SELECT id, title FROM tl_form ORDER BY title asc")->execute($objWidget->currentRecord)->fetchAllAssoc();
         }
 
         $arrReturn = array();
 
         foreach ($arrModules as $key => $value)
         {
-            $arrReturn[$value["id"]] = $value["name"];
+            $arrReturn[$value["id"].'-module'] = $value["name"];
         }
+	
+	foreach ($arrForms as $key => $value)
+        {
+            $arrReturn[$value["id"].'-form'] = $value["title"];
+        }
+
+	asort($arrReturn);
 
         return $arrReturn;
     }

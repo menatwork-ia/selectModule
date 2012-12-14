@@ -69,7 +69,16 @@ class SelectModule extends Module
         {            
             if($GLOBALS["TL_LANGUAGE"] == $arrValue["language"])
             {
-                $strReturn .= $this->getFrontendModule($arrValue["module"]);
+		$arrType = explode('-', $arrValue["module"]);
+		switch ($arrType[1])
+		{
+			case 'module':
+				$strReturn .= $this->getFrontendModule($arrType[0]);
+				break;
+			case 'form':
+				$strReturn .= $this->getForm($arrType[0]);
+				break;
+		}
             }            
         }
         
