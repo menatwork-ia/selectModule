@@ -30,17 +30,17 @@
 
 class SelectModuleRunonce extends Controller
 {
-	
-	public function run()
-	{
-		$this->import('Database');
-		
-        $objModules = $this->Database->prepare('SELECT id, sm_wizard FROM tl_module WHERE type = \'selectmodule\'')->executeUncached();
-        
+
+    public function run()
+    {
+        $objModules = Database::getInstance()
+                ->prepare('SELECT id, sm_wizard FROM tl_module WHERE type = \'selectmodule\'')
+                ->executeUncached();
+
         while($row = $objModules->fetchAssoc())
         {
             $tmp = deserialize($row['sm_wizard'], true);
-            
+
             foreach ($tmp as $k => $v)
             {
                 if (is_numeric($v['module']))
@@ -48,15 +48,13 @@ class SelectModuleRunonce extends Controller
                     $tmp[$k]['module'] = $v['module'].'-module';
                 }
             }
-            
-            $this->Database->prepare('UPDATE tl_module SET sm_wizard = ? WHERE id = ?')->executeUncached(serialize($tmp), $row['id']);
+
+            Database::getInstance()
+                    ->prepare('UPDATE tl_module SET sm_wizard = ? WHERE id = ?')
+                    ->executeUncached(serialize($tmp), $row['id']);
         }
-		
-        exit();
 	}
 }
 
-
 $objSelectModuleRunonce = new SelectModuleRunonce();
 $objSelectModuleRunonce->run();
-
