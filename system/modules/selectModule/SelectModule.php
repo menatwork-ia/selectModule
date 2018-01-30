@@ -26,7 +26,6 @@
  * @license    GNU/LGPL
  * @filesource
  */
-
 class SelectModule extends Module
 {
 
@@ -42,15 +41,14 @@ class SelectModule extends Module
      */
     public function generate()
     {
-        if (TL_MODE == 'BE')
-        {
+        if (TL_MODE == 'BE') {
             $objTemplate = new BackendTemplate('be_wildcard');
 
             $objTemplate->wildcard = '### SELECTMODULE ###';
-            $objTemplate->title = $this->headline;
-            $objTemplate->id = $this->id;
-            $objTemplate->link = $this->name;
-            $objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
+            $objTemplate->title    = $this->headline;
+            $objTemplate->id       = $this->id;
+            $objTemplate->link     = $this->name;
+            $objTemplate->href     = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
 
             return $objTemplate->parse();
         }
@@ -64,26 +62,23 @@ class SelectModule extends Module
     public function compile()
     {
         $strReturn = "";
-        
-        foreach (deserialize($this->sm_wizard) as $arrValue)
-        {            
-            if($GLOBALS["TL_LANGUAGE"] == $arrValue["language"])
-            {
-		$arrType = explode('-', $arrValue["module"]);
-		switch ($arrType[1])
-		{
-			case 'module':
-				$strReturn .= $this->getFrontendModule($arrType[0]);
-				break;
-			case 'form':
-				$strReturn .= $this->getForm($arrType[0]);
-				break;
-		}
-            }            
+
+        foreach (deserialize($this->sm_wizard) as $arrValue) {
+            if ($GLOBALS["TL_LANGUAGE"] == str_replace('_', '-', $arrValue["language"])) {
+                $arrType = explode('-', $arrValue["module"]);
+                switch ($arrType[1]) {
+                    case 'module':
+                        $strReturn .= $this->getFrontendModule($arrType[0]);
+                        break;
+                    case 'form':
+                        $strReturn .= $this->getForm($arrType[0]);
+                        break;
+                }
+            }
         }
-        
+
         $this->Template->searchable = ($this->sm_searchable == 1) ? true : false;
-        $this->Template->content = $strReturn;
+        $this->Template->content    = $strReturn;
     }
 
 }

@@ -4,7 +4,7 @@
 	"keywords":["frontendmodule","module","language"],
 	"type":"contao-module",
 	"homepage":"http://www.men-at-work.de",
-	"license":"LGPL-3.0+",
+	"license":"LGPL-3.0-or-later",
 	"authors":[
 		{
 			"name":"Andreas Isaak",
@@ -26,9 +26,8 @@
 		"source":"https://github.com/menatwork-ia/selectModule"
 	},
 	"require":{
-		"php":">=5.3",
-		"contao/core":">=2.11,<4",
-		"contao-community-alliance/composer-installer":"*",
+		"php": "^5.6|^7.0",
+		"contao/core-bundle": "^4.4.2",
 		"menatwork/contao-multicolumnwizard":"~3.2"
 	},
 	"autoload":{
