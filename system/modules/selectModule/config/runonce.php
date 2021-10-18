@@ -28,7 +28,7 @@
  */
 
 
-class SelectModuleRunonce extends Controller
+class SelectModuleRunonce
 {
 
     public function run()
