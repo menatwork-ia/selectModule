@@ -1,46 +1,52 @@
 {
-	"name":"menatwork/selectmodule",
-	"description":"Assign a language to a module",
-	"keywords":["frontendmodule","module","language"],
-	"type":"contao-module",
-	"homepage":"http://www.men-at-work.de",
-	"license":"LGPL-3.0-or-later",
-	"authors":[
-		{
-			"name":"Andreas Isaak",
-			"email":"isaak@men-at-work.de",
-			"homepage":"http://www.men-at-work.de",
-			"role":"Developer"
-		},
-		{
-			"name":"Stefan Heimes",
-			"email":"heimes@men-at-work.de",
-			"homepage":"http://www.men-at-work.de",
-			"role":"Developer"
-		}
-	],
-	"support":{
-		"email":"contao@men-at-work.de",
-		"issues":"https://github.com/menatwork-ia/selectModule/issues",
-		"irc":"irc://irc.freenode.org/contao.dev",
-		"source":"https://github.com/menatwork-ia/selectModule"
-	},
-	"require":{
-		"php": "^5.6|^7.0",
-		"contao/core-bundle": "^4.4.2",
-		"menatwork/contao-multicolumnwizard":"~3.2"
-	},
-	"autoload":{
-		"classmap":["system/"]
-	},
-	"replace":{
-		"contao-legacy/selectmodule":"*"
-	},
-	"extra":{
-		"contao":{
-			"sources":{
-				"system/modules/selectModule":"system/modules/selectModule"
-			}
-		}
-	}
+  "name": "menatwork/selectmodule",
+  "description": "Assign a language to a module",
+  "keywords": [
+    "frontendmodule",
+    "module",
+    "language"
+  ],
+  "type": "contao-module",
+  "homepage": "http://www.men-at-work.de",
+  "license": "LGPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Andreas Isaak",
+      "email": "isaak@men-at-work.de",
+      "homepage": "http://www.men-at-work.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Stefan Heimes",
+      "email": "heimes@men-at-work.de",
+      "homepage": "http://www.men-at-work.de",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "contao@men-at-work.de",
+    "issues": "https://github.com/menatwork-ia/selectModule/issues",
+    "irc": "irc://irc.freenode.org/contao.dev",
+    "source": "https://github.com/menatwork-ia/selectModule"
+  },
+  "require": {
+    "php": "^7.0 || ^8.0",
+    "contao/core-bundle": "^4.4",
+    "menatwork/contao-multicolumnwizard": "^3.2"
+  },
+  "autoload": {
+    "classmap": [
+      "system/"
+    ]
+  },
+  "replace": {
+    "contao-legacy/selectmodule": "*"
+  },
+  "extra": {
+    "contao": {
+      "sources": {
+        "system/modules/selectModule": "system/modules/selectModule"
+      }
+    }
+  }
 }
