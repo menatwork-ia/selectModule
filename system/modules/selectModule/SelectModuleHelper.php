@@ -32,7 +32,7 @@ class SelectModuleHelper extends Backend
 
     /**
      * Check the required extensions and files for contentflash
-     * 
+     *
      * @param string $strContent
      * @param string $strTemplate
      * @return string
@@ -41,22 +41,22 @@ class SelectModuleHelper extends Backend
     {
         if ($strTemplate == 'be_main')
         {
-            if (!is_array($_SESSION["TL_INFO"]))
+            if (!isset($_SESSION["TL_INFO"]) || !is_array($_SESSION["TL_INFO"]))
             {
-                $_SESSION["TL_INFO"] = array();
+                $_SESSION["TL_INFO"] = [];
             }
 
             // required extensions
-            $arrRequiredExtensions = array(
+            $arrRequiredExtensions = [
                 'MultiColumnWizard' => 'multicolumnwizard'
-            );
+            ];
 
             // check for required extensions
             foreach ($arrRequiredExtensions as $key => $val)
             {
                 if (!in_array($val, $this->Config->getActiveModules()))
                 {
-                    $_SESSION["TL_INFO"] = array_merge($_SESSION["TL_INFO"], array($val => 'Please install the required extension <strong>' . $key . '</strong>'));
+                    $_SESSION["TL_INFO"] = array_merge($_SESSION["TL_INFO"], [$val => 'Please install the required extension <strong>' . $key . '</strong>']);
                 }
                 else
                 {
